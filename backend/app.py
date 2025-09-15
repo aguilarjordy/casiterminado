@@ -98,5 +98,6 @@ def predict_landmarks():
     idx = int(preds.argmax())
     return jsonify({'prediction': label_map.get(idx, str(idx)), 'confidence': float(preds[idx])}), 200
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Render usa PORT, local usa 5000
+    app.run(host="0.0.0.0", port=port, debug=True)
