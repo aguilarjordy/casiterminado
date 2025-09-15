@@ -74,7 +74,7 @@ export default function App(){
       }
 
       if(collectRef.current && collectRef.current.active && collectRef.current.label){
-        fetch('http://127.0.0.1:5000/upload_landmarks',{
+        fetch('https://casiterminado.onrender.com/upload_landmarks',{
           method:'POST',
           headers:{'Content-Type':'application/json'},
           body:JSON.stringify({label:collectRef.current.label,landmarks:scaled})
@@ -89,7 +89,7 @@ export default function App(){
 
   async function autoPredict(landmarks){
     try{
-      const res = await fetch('http://127.0.0.1:5000/predict_landmarks',{
+      const res = await fetch('https://casiterminado.onrender.com/predict_landmarks',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({landmarks})
@@ -104,7 +104,7 @@ export default function App(){
   }
 
   async function fetchCounts(){
-    try{ const res = await fetch('http://127.0.0.1:5000/count'); const j = await res.json(); setCounts(j||{}) }catch(e){}
+    try{ const res = await fetch('https://casiterminado.onrender.com/count'); const j = await res.json(); setCounts(j||{}) }catch(e){}
   }
 
   const startCollect = (label)=>{
@@ -122,7 +122,7 @@ export default function App(){
   const handleTrain = async ()=>{
     setStatus('Entrenando...')
     try{
-      const res = await fetch('http://127.0.0.1:5000/train_landmarks',{method:'POST'})
+      const res = await fetch('https://casiterminado.onrender.com/train_landmarks',{method:'POST'})
       const j = await res.json()
       if(res.ok) setStatus('Entrenado correctamente')
       else setStatus('Error: '+(j.error||'Error en entrenamiento'))
