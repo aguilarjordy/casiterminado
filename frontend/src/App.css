@@ -1,0 +1,125 @@
+:root {
+  --bg:#0f1720;
+  --card:#0b1320;
+  --accent:#06b6d4;
+  --muted:#94a3b8;
+  --white:#ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  background: var(--bg);
+  color: var(--white);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.left {
+  flex: 1;
+  background: var(--card);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.right {
+  width: 360px;
+  background: var(--card);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+/* 🔹 Video adaptativo */
+.video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 640px;   /* se adapta pero no se deforma */
+  aspect-ratio: 4/3;  /* mantiene la proporción real de la cámara */
+  margin: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.5);
+}
+
+.video-wrap .video {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* 👈 evita recortes */
+  z-index: 1;
+}
+
+.overlay-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: var(--accent);
+  border: none;
+  color: #022;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.button.red {
+  background: #ef4444;
+  color: #fff;
+}
+
+.card-title {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.progress {
+  height: 12px;
+  background: #122133;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.progress-inner {
+  height: 100%;
+  background: linear-gradient(90deg,var(--accent),#34d399);
+  width: 0%;
+}
+
+.small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.prediction-box {
+  font-size: 48px;
+  color: #ffd54a;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 12px;
+}
